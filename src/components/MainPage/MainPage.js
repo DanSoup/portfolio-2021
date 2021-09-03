@@ -11,7 +11,7 @@ const LetterPreservationTitle = ({messages}) => {
   useEffect(() => {
     setTimeout(() => {
       uCurrentTitle((sCurrentTitle + 1) % messages.length)
-    }, 2000);
+    }, 4000);
   });
 
   const title = messages[sCurrentTitle];
@@ -101,6 +101,13 @@ const Developer = () => {
         opinionNote: 'my first - i have a soft spot for it'
       },
       {
+        title: 'GDScript',
+        experience: 10,
+        experienceNote: 'only done a little but want to do more',
+        opinion: 40,
+        opinionNote: 'not enough experience but seems nice'
+      },
+      {
         title: 'HTML',
         experience: 80,
         experienceNote: 'frontend bread',
@@ -178,8 +185,8 @@ const Developer = () => {
     const services = [
       {
         title: 'AWS',
-        experience: 20,
-        experienceNote: 'very experienced but there\'s so much to it',
+        experience: 40,
+        experienceNote: 'former certified solutions architect associate',
         opinion: 75,
         opinionNote: 'powerful but dangerous',
       },
@@ -204,13 +211,13 @@ const Developer = () => {
         <h3>{language.title}</h3>
         <div className="language-content">
           <h4>Experience:</h4>
-          <div class="bar">
+          <div className="bar">
             <div className="bar-back experience"></div>
             <div className="bar-front experience" style={{width: `${language.experience}%`}}></div>
           </div>
           <p className="bar-note">{language.experienceNote}</p>
           <h4>Opinion:</h4>
-          <div class="bar">
+          <div className="bar">
             <div className="bar-back opinion"></div>
             <div className="bar-front opinion" style={{width: `${language.opinion}%`}}></div>
           </div>
@@ -220,43 +227,154 @@ const Developer = () => {
     };
 
     return <div id="languages">
-      {[1,1,1,1,1,1,1,1,1,1].map(() => {
+      {[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((k, i) => {
         const left = Math.floor(Math.random() * 20) + 20;
         const right = Math.floor(Math.random() * 20) + 20;
         const centre = Math.floor(Math.random() * 10) + Math.max(left, right) + 5;
 
-        return <div className="cloud" style={{animationDelay: Math.random() * 1000 + 'ms', left: Math.random() * 110 - 10 + '%', top: Math.random() * 110 - 10 + '%'}}>
-          <div className="cloud-left" style={{height: left + 'px', width: left + 'px', left: left / 2 + 'px'}}></div>
-          <div className="cloud-centre" style={{height: centre + 'px', width: centre + 'px'}}></div>
-          <div className="cloud-right" style={{height: right + 'px', width: right + 'px', right: right / 2 + 'px'}}></div>
+        return <div className="cloud" style={{animationDelay: Math.random() * 1000 + 'ms', left: Math.random() * 110 - 10 + '%', top: Math.random() * 110 - 10 + '%'}} key={'cloud' + i}>
+          <div className="cloud-left" style={{height: left + 'px', width: left + 'px', left: left / 2 + 'px'}}>
+            <div className="cloud-left absolute" style={{height: left - 6 + 'px', width: left - 6 + 'px', left: 3 + 'px', top: 3 + 'px', backgroundColor: '#ffffff'}}></div>
+            <div className="cloud-left absolute" style={{height: left - 6 + 'px', width: left - 6 + 'px', left: 3 + 4.5 ** 0.5 + 'px', top: 3 + 4.5 ** 0.5 + 'px', backgroundColor: '#eeeeee'}}></div>
+          </div>
+          <div className="cloud-centre" style={{height: centre + 'px', width: centre + 'px'}}>
+          <div className="cloud-left absolute" style={{height: centre - 6 + 'px', width: centre - 6 + 'px', left: 3 + 'px', top: 3 + 'px', backgroundColor: '#ffffff'}}></div>
+            <div className="cloud-left absolute" style={{height: centre - 6 + 'px', width: centre - 6 + 'px', left: 3 + 4.5 ** 0.5 + 'px', top: 3 + 4.5 ** 0.5 + 'px', backgroundColor: '#eeeeee'}}></div>
+          </div>
+          <div className="cloud-right" style={{height: right + 'px', width: right + 'px', right: right / 2 + 'px'}}>
+          <div className="cloud-left absolute" style={{height: right - 6 + 'px', width: right - 6 + 'px', left: 3 + 'px', top: 3 + 'px', backgroundColor: '#ffffff'}}></div>
+            <div className="cloud-left absolute" style={{height: right - 6 + 'px', width: right - 6 + 'px', left: 3 + 4.5 ** 0.5 + 'px', top: 3 + 4.5 ** 0.5 + 'px', backgroundColor: '#eeeeee'}}></div>
+          </div>
         </div>
       })}
       <h2>Languages</h2>
       <div className="language-list">
         {languages.map(language => {
-          return <Language language={language}/>
+          return <Language language={language} key={language.title}/>
         })}
       </div>
       <h2>Frameworks & Packages</h2>
       <div className="language-list">
         {frameworks.map(language => {
-          return <Language language={language}/>
+          return <Language language={language} key={language.title}/>
         })}
       </div>
       <h2>Services & Technologies</h2>
       <div className="language-list">
         {services.map(language => {
-          return <Language language={language}/>
+          return <Language language={language} key={language.title}/>
         })}
+      </div>
+      <div className="hills">
+        <div className="hill-3"></div>
+        <div className="hill-2"></div>
+        <div className="hill-1"></div>
       </div>
     </div>
   }
 
   return <div>
-    <h1>Programmer</h1>
     <Languages/>
   </div>
 };
+
+const Job = ({index, sJobIndex, job}) => {
+  const diff = sJobIndex - index;
+  let position = 'center';
+
+  if (diff < -1) position = 'leftmost'
+  else if (diff === -1) position = 'left'
+  else if (diff === 1) position = 'right'
+  else if (diff > 1) position = 'rightmost'
+
+  return <div className={`job ${position}`}>
+    <div>
+      <h1>{job.title}</h1>
+      <h3>{job.date}</h3>
+    </div>
+    <h2>{job.company}, {job.location}</h2>
+    <p>{job.description}</p>
+  </div>
+}
+
+const Work = () => {
+  const [sJobIndex, uJobIndex] = useState(0);
+
+  const jobs = [
+    {
+      title: 'Software Developer',
+      company: 'Pretty Little Thing',
+      location: 'Manchester',
+      date: '2019 - 2021',
+      description: 'Worked on internal tools for multiple other departments. Front end consisted of Vue with Laravel. Back end used AWS Lambda and JavaScript, later TypeScript. Heavy integration with AWS, particularly API Gateway and DynamoDB.'
+    },
+    {
+      title: 'Volunteer Coding Tutor',
+      company: 'Code & Stuff',
+      location: 'Manchester',
+      date: '2018 - 2020',
+      description: 'I was a tutor for an organization that aimed to help women and gender minorities learn to program in the aim of entering the tech industry.'
+    },
+    {
+      title: 'Infrastructure Developer',
+      company: 'Weaveability',
+      location: 'Bury',
+      date: '2018 - 2019',
+      description: 'A developer as part of the infrastructure team. Mainly created tools for monitoring and controlling EC2 instances.'
+    },
+    {
+      title: 'Gaming Arena Staff Member',
+      company: 'Belong @ GAME',
+      location: 'Trafford',
+      date: '2016 - 2018'
+    },
+    {
+      title: 'Esports Tournament Streamer',
+      company: 'Big Good',
+      location: 'Nationwide & International',
+      date: '2017 - 2018'
+    },
+    {
+      title: 'Esports Tournament Organizer',
+      company: 'Team Heir',
+      location: 'Nationwide',
+      date: '2015 - 2018'
+    },
+  ]
+
+  const nextIndex = () => uJobIndex(Math.min(sJobIndex + 1, jobs.length - 1));
+  const prevIndex = () => uJobIndex(Math.max(sJobIndex - 1, 0));
+  const chooseIndex = i => uJobIndex(i);
+
+  return <div id="work">
+    <div className="planet-system" style={{left: '300px', bottom: '300px'}}>
+      <div className="planet" style={{backgroundImage: `url('src/images/jupiter.png')`}}></div>
+      <div className="moon"><div><div><img width="90" heigh="90" src="src\images\duck.png"></img></div></div></div>
+    </div>
+    <div className="planet-system" style={{right: '400px', top: '100px'}}>
+      <div className="planet" style={{backgroundImage: `url('src/images/earth.png')`}}></div>
+      <div className="moon" style={{animationDuration: '21s'}}>
+        <div style={{animationDuration: '50s'}}>
+          <div style={{animationDuration: '21s'}}><img width="70" heigh="70" src="src\images\cat.png"></img></div>
+        </div>
+      </div>
+    </div>
+    <div className="main">
+      <button onClick={nextIndex}>{'<'}</button>
+      <div className="jobs">
+        {jobs.map((job, index) => {
+          return <Job job={job} index={index} sJobIndex={sJobIndex}/> 
+        })}
+      </div>
+      <button onClick={prevIndex}>{'>'}</button>
+    </div>
+    <div className="scroll">
+      {jobs.map((job, index) => {
+        return <div className={`scroll-icon ${index === sJobIndex ? 'selected' : ''}`} key={job.title + '-' + job.date} onClick={() => chooseIndex(index)}></div>
+      })}
+    </div>
+  </div>
+}
 
 const MainPage = (props) => {
 
@@ -265,18 +383,20 @@ const MainPage = (props) => {
   return <>
     <Switch location={location}>
       <Route exact path="/">
-        <div id="heading">
+        <div className="heading">
           <LetterPreservationTitle messages={[
-            'Daniel Thomas',
+            'Daniel Thomas BSc.',
             'Full Stack Developer',
             'Programmer',
             'Artist',
+            'Gamer',
             'Mathematician',
             'Streamer',
             'Tournament Organizer',
             'Musician',
             '3D Modeller',
-            '3D Printer'
+            '3D Printing Enthusiast',
+            'UK Esports Awards Nominee',
           ]}/>
         </div>
         <div id="win95">
@@ -284,6 +404,10 @@ const MainPage = (props) => {
         </div>
         <div id="developer">
           <Developer/>
+        </div>
+        <Work/>
+        <div>
+
         </div>
         <Link to="/path">PATH</Link>
       </Route>

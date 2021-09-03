@@ -13,9 +13,25 @@
   src: url('/src/fonts/Multicolore Pro.otf') format('opentype'); 
 }
 
+@font-face {
+  font-family: 'Conthrax';
+  src: url('/src/fonts/conthrax-sb.ttf') format('truetype'); 
+}
+
 @keyframes backgroundMove {
   0% {background-position: 0px 0px;}
   100% {background-position: -35.355px 0px;}
+}
+
+@keyframes textGlitch1 {
+  0% {transform: skew(0deg);}
+  40% {transform: skew(0deg);}
+  40.1% {transform: skew(30deg);}
+  40.2% {transform: skew(0deg);}
+  50% {transform: skew(0deg);}
+  50.1% {transform: skew(50deg);}
+  50.2% {transform: skew(0deg);}
+  100% {transform: skew(0deg);}
 }
 
 body {
@@ -33,6 +49,10 @@ $secondary-color: #000000;
 
 html {
   // overflow-x: hidden;
+}
+
+#app {
+  position: absolute;
 }
 
 div.letter-preservation-title {
@@ -106,7 +126,7 @@ div.win-95-window {
   }
 }
 
-div#heading {
+div.heading {
   overflow: hidden;
   width: 100%;
   height: 100px;
@@ -127,11 +147,27 @@ div#win95 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-bottom: black solid 4px;
 }
 
 div#developer {
   width: 100%;
   overflow: hidden;
+  border-bottom: black solid 4px;
+
+  div.programmer-heading {
+    position: relative;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    > p {
+      animation: textGlitch1 10s linear infinite;
+    }
+  }
 }
 
 div#languages {
@@ -159,6 +195,7 @@ div#languages {
   }
   h2 {
     font-size: 50px;
+    margin-top: 40px;
   }
   h3 {
     padding-left: 8px;
@@ -275,14 +312,26 @@ div#languages {
     transform-origin: center;
 
     > div {
-      background-color: white;
+      background-color: #eeeeee;
       position: relative;
       border-radius: 100px;
       bottom: 0px;
     }
 
-    .cloud-left {
+    .absolute {
+      position: absolute;
+      &.shadow {
+        top: 3px;
+        left: 3px;
+      }
+      &.highlight {
+        top: 6px;
+        left: 6px;
+      }
+    }
 
+    .cloud-left {
+      border-radius: 100px;
     }
     .cloud-centre {
 
@@ -291,4 +340,224 @@ div#languages {
 
     }
   }
+
+  .hills {
+    height: 200px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+
+    .hill-1 {
+      width: 10000px;
+      height: 10000px;
+      border-radius: 10000px;
+      position: absolute;
+      top: 80px;
+      left: -4800px;
+      background-color: green;
+    }
+
+    .hill-2 {
+      width: 10000px;
+      height: 10000px;
+      border-radius: 10000px;
+      position: absolute;
+      top: 40px;
+      right: -4800px;
+      background-color: rgb(12, 87, 12);
+    }
+
+    .hill-3 {
+      width: 10000px;
+      height: 10000px;
+      border-radius: 10000px;
+      position: absolute;
+      top: 0px;
+      left: -4500px;
+      background-color: rgb(37, 77, 37);
+    }
+  }
+}
+
+div#work {
+  width: 100%;
+  font-family: 'Conthrax';
+  background-color: #050010;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: black solid 4px;
+  background-image: url('./images/space.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
+
+    button {
+      border: solid 4px #ffffff;
+      font-size: 200px;
+      background-color: #00000080;
+      color: white;
+      margin: 0px 50px;
+      cursor: pointer;
+      border-radius: 0px 20px;
+      &:hover {
+        background-color: #ffffff20;
+      }
+      &:active {
+        transform: scale(1.1);
+      }
+    }
+  
+    .jobs {
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+      perspective-origin: 0px 0px -1000px;
+      flex-grow: 1;
+  
+      .job {
+  
+        border: solid 4px #ffffff;
+        border-radius: 0px 20px;
+        position: absolute;
+        transition: transform 1s, opacity 1s;
+        opacity: 1;
+        background-color: #00000080;
+        padding: 10px;
+        max-width: 400px;
+  
+        &.leftmost {
+          transform: rotateY(-90deg) translateX(0px) translateY(300px);
+          opacity: 0;
+          z-index: 1;
+        }
+        &.left {
+          transform: rotateY(-45deg) translateX(-50vw) translateY(50px);
+          opacity: 0.5;
+          z-index: 2;
+        }
+        &.center {
+          transform: rotateY(0deg) translateX(0px);
+          opacity: 1;
+          z-index: 3;
+        }
+        &.right {
+          transform: rotateY(45deg) translateX(50vw) translateY(-50px);
+          opacity: 0.5;
+          z-index: 2;
+        }
+        &.rightmost {
+          transform: rotateY(90deg) translateX(0px) translateY(-300px);
+          opacity: 0;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  .scroll {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .scroll-icon {
+      border: solid 4px white;
+      width: 20px;
+      height: 20px;
+      border-radius: 100px;
+      margin: 10px 10px 40px 10px;
+      background-color: #00000080;
+      transition: 0.5s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #ffffff20;
+      }
+
+      &:active {
+        background-color: #ffffffff;
+      }
+
+      &.selected {
+        background-color: #ffffffc0;
+      }
+    }
+
+  }
+
+  .planet-system {
+    position: absolute;
+    z-index: 0;
+
+    .planet {
+      width: 200px;
+      height: 200px;
+      background-position: center;
+      background-size: contain;
+      position: absolute;
+      z-index: 5;
+    }
+
+    @keyframes orbit1 {
+      0% {transform: translateX(-150px);}
+      50% {transform: translateX(150px);}
+      100% {transform: translateX(-150px);}
+    }
+
+    @keyframes orbit2 {
+      0% {transform: rotateZ(20deg)}
+      50% {transform: rotateZ(-20deg)}
+      100% {transform: rotateZ(20deg)}
+    }
+
+    @keyframes orbit3 {
+      0% {z-index: 10;}
+      50% {z-index: 0;}
+      100% {z-index: 10;}
+    }
+  
+    .moon {
+      animation: orbit3 5s step-start infinite;
+      transform-origin: center;
+      width: 200px;
+      height: 200px;
+      z-index: 10;
+      position: absolute;
+      > div {
+        animation: orbit2 32s ease-in-out infinite;
+        transform-origin: center;
+        width: 200px;
+        height: 200px;
+        z-index: 10;
+        > div {
+          animation: orbit1 5s ease-in-out infinite;
+          width: 70px;
+          height: 70px;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 65px;
+          left: 65px;
+          z-index: 10;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+
 }
