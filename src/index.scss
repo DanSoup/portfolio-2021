@@ -1,21 +1,21 @@
 @font-face {
   font-family: 'Windows Regular';
-  src: url('/src/fonts/Windows Regular.ttf') format('truetype'); 
+  src: url('./fonts/Windows Regular.ttf') format('truetype'); 
 }
 
 @font-face {
   font-family: 'Loja';
-  src: url('/src/fonts/Loja.ttf') format('truetype'); 
+  src: url('./fonts/Loja.ttf') format('truetype'); 
 }
 
 @font-face {
   font-family: 'Multicolore Pro';
-  src: url('/src/fonts/Multicolore Pro.otf') format('opentype'); 
+  src: url('./fonts/Multicolore Pro.otf') format('opentype'); 
 }
 
 @font-face {
   font-family: 'Conthrax';
-  src: url('/src/fonts/conthrax-sb.ttf') format('truetype'); 
+  src: url('./fonts/conthrax-sb.ttf') format('truetype'); 
 }
 
 @keyframes backgroundMove {

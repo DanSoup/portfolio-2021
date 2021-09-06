@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {Switch, Route, Link, useLocation} from 'react-router-dom';
+import jupiterImg from '../../images/jupiter.png';
+import earthImg from '../../images/earth.png';
+import catImg from '../../images/cat.png';
+import duckImg from '../../images/duck.png';
 
 const LetterPreservationTitle = ({messages}) => {
   const [sCurrentTitle, uCurrentTitle] = useState(0);
@@ -348,14 +352,14 @@ const Work = () => {
 
   return <div id="work">
     <div className="planet-system" style={{left: '300px', bottom: '300px'}}>
-      <div className="planet" style={{backgroundImage: `url('src/images/jupiter.png')`}}></div>
-      <div className="moon"><div><div><img width="90" heigh="90" src="src\images\duck.png"></img></div></div></div>
+      <div className="planet"><img height="200" width="200" src={jupiterImg}></img></div>
+      <div className="moon"><div><div><img width="90" heigh="90" src={duckImg}></img></div></div></div>
     </div>
     <div className="planet-system" style={{right: '400px', top: '100px'}}>
-      <div className="planet" style={{backgroundImage: `url('src/images/earth.png')`}}></div>
+      <div className="planet"><img height="200" width="200" src={earthImg}></img></div>
       <div className="moon" style={{animationDuration: '21s'}}>
         <div style={{animationDuration: '50s'}}>
-          <div style={{animationDuration: '21s'}}><img width="70" heigh="70" src="src\images\cat.png"></img></div>
+          <div style={{animationDuration: '21s'}}><img width="70" heigh="70" src={catImg}></img></div>
         </div>
       </div>
     </div>
