@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip3 install --upgrade awscli
+      - npm install
+      - npm run build
+      - aws s3 sync --delete build/ $APP_BUCKET/apps/portfolio-2021 --acl public-read
