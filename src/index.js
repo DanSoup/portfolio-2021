@@ -8,7 +8,7 @@ import MainPage from './components/MainPage/MainPage.js'
 
 class App extends Component {
   render () {
-    return <BrowserRouter>
+    return <BrowserRouter basename={process.env.BASENAME}>
       <MainPage/>
     </BrowserRouter>
   };
