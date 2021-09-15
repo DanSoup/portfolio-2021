@@ -383,6 +383,7 @@ const Work = () => {
 const MainPage = (props) => {
 
   console.log(useLocation())
+  console.log(useHistory())
 
   return <>
     <Switch>
