@@ -382,10 +382,8 @@ const Work = () => {
 
 const MainPage = (props) => {
 
-  let location = useLocation();
-
   return <>
-    <Switch location={location}>
+    <Switch>
       <Route exact path="/">
         <div className="heading">
           <LetterPreservationTitle messages={[
