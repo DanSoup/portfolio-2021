@@ -382,6 +382,8 @@ const Work = () => {
 
 const MainPage = (props) => {
 
+  console.log(useLocation())
+
   return <>
     <Switch>
       <Route exact path="/">
