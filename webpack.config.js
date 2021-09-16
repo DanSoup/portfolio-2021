@@ -15,7 +15,8 @@ module.exports = (env) => {
       filename: 'index_bundle.js'
     },
     live: {
-      filename: 'https://dansoup.co.uk/apps/portfolio-2021/index_bundle.js'
+      filename: 'index_bundle.js',
+      publicPath: 'https://dansoup.co.uk/apps/portfolio-2021/'
     }
   }
 
@@ -23,7 +24,8 @@ module.exports = (env) => {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname , 'dist'),
-      filename: modeVars[env.MODE].filename
+      filename: modeVars[env.MODE].filename,
+      publicPath: modeVars[env.MODE].publicPath
     },
     module: {
       rules: [
