@@ -8,13 +8,13 @@ module.exports = (env) => {
   console.log(env)
 
   const modeVars = {
-    LOCAL: {
+    local: {
       filename: 'index_bundle.js'
     },
-    DEV: {
+    dev: {
       filename: 'index_bundle.js'
     },
-    LIVE: {
+    live: {
       filename: 'https://dansoup.co.uk/apps/portfolio-2021/index_bundle.js'
     }
   }
