@@ -382,8 +382,8 @@ const Work = () => {
 
 const MainPage = (props) => {
 
-  console.log(useLocation())
-  console.log(window.location)
+  const location = useLocation()
+  console.log(process.env)
 
   return <>
     <Switch>

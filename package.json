@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "create": "webpack",
-    "start": "webpack-dev-server --open",
-    "build": "webpack --mode production",
+    "start": "webpack-dev-server --open --env.MODE=local",
+    "build": "webpack --mode production --env.MODE=dev",
+    "live": "webpack --mode production --env.MODE=live",
     "test-build": "http-server .\\dist"
   },
   "repository": {
@@ -26,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
