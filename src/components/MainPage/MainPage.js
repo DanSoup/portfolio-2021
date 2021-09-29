@@ -182,7 +182,7 @@ const Developer = () => {
         experience: 40,
         experienceNote: 'used before i used jest',
         opinion: 60,
-        opinionNote: 'like jest but in two halfs'
+        opinionNote: 'like jest but in two halves'
       }
     ];
 
@@ -324,26 +324,28 @@ const Work = () => {
       company: 'Weaveability',
       location: 'Bury',
       date: '2018 - 2019',
-      description: 'A developer as part of the infrastructure team. Mainly created tools for monitoring and controlling EC2 instances.'
+      description: 'A developer as part of the infrastructure team. Mainly created tools for monitoring and controlling EC2 instances and monitoring user access to AWS services.'
     },
     {
       title: 'Gaming Arena Staff Member',
       company: 'Belong @ GAME',
       location: 'Trafford',
-      date: '2016 - 2018'
+      date: '2016 - 2018',
+      description: 'Main duties involved assisting customers on the gaming PCs and consoles, maintaining the gaming PCs and the cleanliness of the gaming arena as well as standard retail duties.'
     },
     {
       title: 'Esports Tournament Streamer',
       company: 'Big Good',
       location: 'Nationwide & International',
-      date: '2017 - 2018'
+      date: '2017 - 2018',
+      description: 'Streamed Super Smash Bros. Melee tournaments in situ at various locations accross England and one event in Ireland. Built the stream layouts and data management systems from scratch.'
     },
     {
       title: 'Esports Tournament Organizer',
       company: 'Team Heir',
       location: 'Nationwide',
       date: '2015 - 2018',
-      description: 'Originally brought on as a graphics designer, went on to be involved with multiple aspects of tournament organization. Events worked on include Heir 2, Heir 3, Heir 4, Heir 5 and Origin.'
+      description: 'Originally brought on as a graphics designer, went on to be involved with multiple aspects of tournament organization. Events worked on include Heir 2, Heir 3, Heir 4, Heir 5 and Origin. Also assisted some non-Team Heir events such as providing data and graphics. Team Heir was nominated for two awards at the UK Esports Awards 2018.'
     },
   ]
 
@@ -381,6 +383,13 @@ const Work = () => {
   </div>
 }
 
+const Tournaments = () => {
+  return <div id="tournaments">
+    <div className="bg" id="grid-1"></div>
+    <div className="bg" id="grid-2"></div>
+  </div>
+};
+
 const MainPage = (props) => {
 
   const location = useLocation()
@@ -412,16 +421,10 @@ const MainPage = (props) => {
           <Developer/>
         </div>
         <Work/>
+        {/* <Tournaments/> */}
         <div>
 
         </div>
-        <Link to="/path">PATH</Link>
-      </Route>
-      <Route path="/path">
-        Path
-      </Route>
-      <Route path="*">
-        404
       </Route>
     </Switch>
   </>
