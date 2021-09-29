@@ -342,7 +342,8 @@ const Work = () => {
       title: 'Esports Tournament Organizer',
       company: 'Team Heir',
       location: 'Nationwide',
-      date: '2015 - 2018'
+      date: '2015 - 2018',
+      description: 'Originally brought on as a graphics designer, went on to be involved with multiple aspects of tournament organization. Events worked on include Heir 2, Heir 3, Heir 4, Heir 5 and Origin.'
     },
   ]
 
