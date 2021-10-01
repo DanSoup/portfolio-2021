@@ -6,5 +6,4 @@ phases:
       - pip3 install --upgrade awscli
       - npm install
       - npm install -D webpack-cli
-      - webpack --mode production --env.MODE=live
-      - aws s3 sync --delete dist/ $APP_BUCKET/apps/portfolio-2021
+      - aws s3 sync --delete dist/ $APP_BUCKET/apps/portfolio-2021 && yes
