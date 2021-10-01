@@ -5,7 +5,7 @@ phases:
     commands:
       - pip3 install --upgrade awscli
       - npm install
-      - TEST_ENV="frfrg"
-      - TEST_TWO=bgibgji
+      - export TEST_ENV="frfrg"
+      - export TEST_TWO=bgibgji
       - npm run live
       - aws s3 sync --delete dist/ $APP_BUCKET/apps/portfolio-2021
