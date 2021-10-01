@@ -5,6 +5,5 @@ phases:
     commands:
       - pip3 install --upgrade awscli
       - npm install
-      - TEST=1234
-      - npm run live
+      - webpack --mode production --env.MODE=live --env.PUBLIC_PATH=$PUBLIC_PATH
       - aws s3 sync --delete dist/ $APP_BUCKET/apps/portfolio-2021
