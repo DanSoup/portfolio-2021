@@ -393,7 +393,6 @@ const Tournaments = () => {
 const MainPage = (props) => {
 
   const location = useLocation()
-  console.log(process.env)
 
   return <>
     <Switch>

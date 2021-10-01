@@ -3,22 +3,23 @@ const {DefinePlugin} = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
 
-module.exports = (env) => {
+module.exports = (wpEnv) => {
 
-  console.log(env)
-  console.log(process.env)
+  const env = {
+    ...process.env,
+    ...wpEnv
+  }
 
   const modeVars = {
     local: {
       filename: 'index_bundle.js'
     },
     dev: {
-      filename: 'index_bundle.js',
-      publicPath: '/'
+      filename: 'index_bundle.js'
     },
     live: {
       filename: 'index_bundle.js',
-      publicPath: 'https://dansoup.co.uk/apps/portfolio-2021/'
+      publicPath: env.LIVE_PUBLIC_PATH
     }
   }
 
