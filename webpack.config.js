@@ -5,14 +5,13 @@ const HtmlWebpackPlugin =  require('html-webpack-plugin');
 
 module.exports = (env) => {
 
-  console.log(env)
-
   const modeVars = {
     local: {
       filename: 'index_bundle.js'
     },
     dev: {
-      filename: 'index_bundle.js'
+      filename: 'index_bundle.js',
+      publicPath: '/'
     },
     live: {
       filename: 'index_bundle.js',
