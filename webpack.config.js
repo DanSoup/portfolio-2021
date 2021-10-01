@@ -10,6 +10,8 @@ module.exports = (wpEnv) => {
     ...wpEnv
   }
 
+  console.log(env)
+
   const modeVars = {
     local: {
       filename: 'index_bundle.js'
