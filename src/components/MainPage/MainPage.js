@@ -6,7 +6,12 @@ import catImg from '../../images/cat.png';
 import duckImg from '../../images/duck.png';
 
 const LetterPreservationTitle = ({messages}) => {
+  const longest = [...messages].sort((a, b) => b.length - a.length)[0].length;
+  const newSize = 1.2 * window.innerWidth / longest;
+
   const [sCurrentTitle, uCurrentTitle] = useState(0);
+  const [sSize, uSize] = useState(Math.floor(newSize));
+  const [sSpacing, uSpacing] = useState(Math.floor(12 * (newSize) / 20));
 
   const letters = messages.reduce((acc, title) => {
     return acc + title;
@@ -14,6 +19,10 @@ const LetterPreservationTitle = ({messages}) => {
 
   useEffect(() => {
     setTimeout(() => {
+      const longest = [...messages].sort((a, b) => b.length - a.length)[0].length;
+      const newSize = 1.2 * window.innerWidth / longest;
+      uSize(Math.floor(newSize));
+      uSpacing(Math.floor(12 * (newSize) / 20))
       uCurrentTitle((sCurrentTitle + 1) % messages.length)
     }, 4000);
   });
@@ -33,14 +42,15 @@ const LetterPreservationTitle = ({messages}) => {
         nextIndex = title.indexOf(letter, nextIndex + 1);
       }
 
-      const startLeft = -12 * title.length;
+      const startLeft = -(sSpacing / 2) * title.length;
 
-      const leftPosition = (nextIndex !== -1 ? nextIndex : (Math.random() * title.length)) * 24 + startLeft;
-      const topPosition = (nextIndex !== -1 ? -24 : ((Math.random() - 0.5) * 120 - 24));
+      const leftPosition = (nextIndex !== -1 ? nextIndex : (Math.random() * title.length)) * sSpacing + startLeft;
+      const topPosition = (nextIndex !== -1 ? -sSpacing : ((Math.random() - 0.5) * 120 - sSpacing));
 
       return <span
         className={`${title.includes(letter) && usedLetters[letter] <= totalLetters ? '' : 'invisible '}`}
         style={{
+          fontSize: `${sSize}px`,
           left: `${leftPosition}px`,
           top: `${topPosition}px`,
           transitionDelay: `${Math.random()}s`

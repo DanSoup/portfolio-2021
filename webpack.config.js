@@ -8,9 +8,7 @@ module.exports = (wpEnv) => {
   const env = {
     ...process.env,
     ...wpEnv
-  }
-
-  console.log(env)
+  };
 
   const modeVars = {
     local: {
