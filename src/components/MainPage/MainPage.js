@@ -1,8 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {Switch, Route, Link, useLocation} from 'react-router-dom';
+import jupiterImg from '../../images/jupiter.png';
+import earthImg from '../../images/earth.png';
+import catImg from '../../images/cat.png';
+import duckImg from '../../images/duck.png';
 
 const LetterPreservationTitle = ({messages}) => {
+  const longest = [...messages].sort((a, b) => b.length - a.length)[0].length;
+  const newSize = 1.2 * window.innerWidth / longest;
+
   const [sCurrentTitle, uCurrentTitle] = useState(0);
+  const [sSize, uSize] = useState(Math.floor(newSize));
+  const [sSpacing, uSpacing] = useState(Math.floor(12 * (newSize) / 20));
 
   const letters = messages.reduce((acc, title) => {
     return acc + title;
@@ -10,6 +19,10 @@ const LetterPreservationTitle = ({messages}) => {
 
   useEffect(() => {
     setTimeout(() => {
+      const longest = [...messages].sort((a, b) => b.length - a.length)[0].length;
+      const newSize = 1.2 * window.innerWidth / longest;
+      uSize(Math.floor(newSize));
+      uSpacing(Math.floor(12 * (newSize) / 20))
       uCurrentTitle((sCurrentTitle + 1) % messages.length)
     }, 4000);
   });
@@ -29,14 +42,15 @@ const LetterPreservationTitle = ({messages}) => {
         nextIndex = title.indexOf(letter, nextIndex + 1);
       }
 
-      const startLeft = -12 * title.length;
+      const startLeft = -(sSpacing / 2) * title.length;
 
-      const leftPosition = (nextIndex !== -1 ? nextIndex : (Math.random() * title.length)) * 24 + startLeft;
-      const topPosition = (nextIndex !== -1 ? -24 : ((Math.random() - 0.5) * 120 - 24));
+      const leftPosition = (nextIndex !== -1 ? nextIndex : (Math.random() * title.length)) * sSpacing + startLeft;
+      const topPosition = (nextIndex !== -1 ? -sSpacing : ((Math.random() - 0.5) * 120 - sSpacing));
 
       return <span
         className={`${title.includes(letter) && usedLetters[letter] <= totalLetters ? '' : 'invisible '}`}
         style={{
+          fontSize: `${sSize}px`,
           left: `${leftPosition}px`,
           top: `${topPosition}px`,
           transitionDelay: `${Math.random()}s`
@@ -178,7 +192,7 @@ const Developer = () => {
         experience: 40,
         experienceNote: 'used before i used jest',
         opinion: 60,
-        opinionNote: 'like jest but in two halfs'
+        opinionNote: 'like jest but in two halves'
       }
     ];
 
@@ -320,25 +334,28 @@ const Work = () => {
       company: 'Weaveability',
       location: 'Bury',
       date: '2018 - 2019',
-      description: 'A developer as part of the infrastructure team. Mainly created tools for monitoring and controlling EC2 instances.'
+      description: 'A developer as part of the infrastructure team. Mainly created tools for monitoring and controlling EC2 instances and monitoring user access to AWS services.'
     },
     {
       title: 'Gaming Arena Staff Member',
       company: 'Belong @ GAME',
       location: 'Trafford',
-      date: '2016 - 2018'
+      date: '2016 - 2018',
+      description: 'Main duties involved assisting customers on the gaming PCs and consoles, maintaining the gaming PCs and the cleanliness of the gaming arena as well as standard retail duties.'
     },
     {
       title: 'Esports Tournament Streamer',
       company: 'Big Good',
       location: 'Nationwide & International',
-      date: '2017 - 2018'
+      date: '2017 - 2018',
+      description: 'Streamed Super Smash Bros. Melee tournaments in situ at various locations accross England and one event in Ireland. Built the stream layouts and data management systems from scratch.'
     },
     {
       title: 'Esports Tournament Organizer',
       company: 'Team Heir',
       location: 'Nationwide',
-      date: '2015 - 2018'
+      date: '2015 - 2018',
+      description: 'Originally brought on as a graphics designer, went on to be involved with multiple aspects of tournament organization. Events worked on include Heir 2, Heir 3, Heir 4, Heir 5 and Origin. Also assisted some non-Team Heir events such as providing data and graphics. Team Heir was nominated for two awards at the UK Esports Awards 2018.'
     },
   ]
 
@@ -348,14 +365,14 @@ const Work = () => {
 
   return <div id="work">
     <div className="planet-system" style={{left: '300px', bottom: '300px'}}>
-      <div className="planet" style={{backgroundImage: `url('src/images/jupiter.png')`}}></div>
-      <div className="moon"><div><div><img width="90" heigh="90" src="src\images\duck.png"></img></div></div></div>
+      <div className="planet"><img height="200" width="200" src={jupiterImg}></img></div>
+      <div className="moon"><div><div><img width="90" heigh="90" src={duckImg}></img></div></div></div>
     </div>
     <div className="planet-system" style={{right: '400px', top: '100px'}}>
-      <div className="planet" style={{backgroundImage: `url('src/images/earth.png')`}}></div>
+      <div className="planet"><img height="200" width="200" src={earthImg}></img></div>
       <div className="moon" style={{animationDuration: '21s'}}>
         <div style={{animationDuration: '50s'}}>
-          <div style={{animationDuration: '21s'}}><img width="70" heigh="70" src="src\images\cat.png"></img></div>
+          <div style={{animationDuration: '21s'}}><img width="70" heigh="70" src={catImg}></img></div>
         </div>
       </div>
     </div>
@@ -376,12 +393,19 @@ const Work = () => {
   </div>
 }
 
+const Tournaments = () => {
+  return <div id="tournaments">
+    <div className="bg" id="grid-1"></div>
+    <div className="bg" id="grid-2"></div>
+  </div>
+};
+
 const MainPage = (props) => {
 
-  let location = useLocation();
+  const location = useLocation()
 
   return <>
-    <Switch location={location}>
+    <Switch>
       <Route exact path="/">
         <div className="heading">
           <LetterPreservationTitle messages={[
@@ -406,16 +430,10 @@ const MainPage = (props) => {
           <Developer/>
         </div>
         <Work/>
+        {/* <Tournaments/> */}
         <div>
 
         </div>
-        <Link to="/path">PATH</Link>
-      </Route>
-      <Route path="/path">
-        Path
-      </Route>
-      <Route path="*">
-        404
       </Route>
     </Switch>
   </>

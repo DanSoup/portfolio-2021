@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip3 install --upgrade awscli
+      - npm install
+      - LIVE_PUBLIC_PATH=$PUBLIC_PATH
+      - npm run live
+      - aws s3 sync --delete dist/ $APP_BUCKET/apps/portfolio-2021
