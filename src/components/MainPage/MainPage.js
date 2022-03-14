@@ -7,7 +7,7 @@ import duckImg from '../../images/duck.png';
 
 const LetterPreservationTitle = ({messages}) => {
   const longest = [...messages].sort((a, b) => b.length - a.length)[0].length;
-  const newSize = 1.2 * window.innerWidth / longest;
+  const newSize = Math.min(60, 1.2 * window.innerWidth / longest);
 
   const [sCurrentTitle, uCurrentTitle] = useState(0);
   const [sSize, uSize] = useState(Math.floor(newSize));
@@ -20,7 +20,7 @@ const LetterPreservationTitle = ({messages}) => {
   useEffect(() => {
     setTimeout(() => {
       const longest = [...messages].sort((a, b) => b.length - a.length)[0].length;
-      const newSize = 1.2 * window.innerWidth / longest;
+      const newSize = Math.min(60, 1.2 * window.innerWidth / longest);
       uSize(Math.floor(newSize));
       uSpacing(Math.floor(12 * (newSize) / 20))
       uCurrentTitle((sCurrentTitle + 1) % messages.length)
