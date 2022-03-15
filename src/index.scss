@@ -1,21 +1,21 @@
 @font-face {
   font-family: 'Windows Regular';
-  src: url('./fonts/Windows Regular.ttf') format('truetype'); 
+  src: url('fonts/Windows Regular.ttf') format('truetype'); 
 }
 
 @font-face {
   font-family: 'Loja';
-  src: url('./fonts/Loja.ttf') format('truetype'); 
+  src: url('fonts/Loja.ttf') format('truetype'); 
 }
 
 @font-face {
   font-family: 'Multicolore Pro';
-  src: url('./fonts/Multicolore Pro.otf') format('opentype'); 
+  src: url('fonts/Multicolore Pro.otf') format('opentype'); 
 }
 
 @font-face {
   font-family: 'Conthrax';
-  src: url('./fonts/conthrax-sb.ttf') format('truetype'); 
+  src: url('fonts/conthrax-sb.ttf') format('truetype'); 
 }
 
 @keyframes backgroundMove {
@@ -120,7 +120,7 @@ div.win-95-window {
       background-position: calc(4 * -84px) calc(1 * -84px); // 84px
       background-size: 2860px; // 715px
       image-rendering: crisp-edges;
-      background-image: url('./images/win95-icons.png');
+      background-image: url('images/win95-icons.png');
     }
   }
 }
