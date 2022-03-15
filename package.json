@@ -1,5 +1,5 @@
 {
-  "name": "pure-react-base-project",
+  "name": "portfolio-2021",
   "version": "1.0.0",
   "description": "A lightweight start for a react project",
   "main": "index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DanSoup/pure-react-base-project.git"
+    "url": "git+https://github.com/DanSoup/portfolio-2021.git"
   },
   "author": "Dan Soup (Daniel Thomas)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DanSoup/pure-react-base-project/issues"
+    "url": "https://github.com/DanSoup/portfolio-2021/issues"
   },
-  "homepage": "https://github.com/DanSoup/pure-react-base-project#readme",
+  "homepage": "https://github.com/DanSoup/portfolio-2021#readme",
   "babel": {
     "presets": [
       "@babel/preset-env",
