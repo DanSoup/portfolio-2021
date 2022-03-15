@@ -75,7 +75,7 @@ const Windows95Window = () => {
     <div className="main-body">
       <div className="message">
         <p>This is the online web portfolio for Daniel Thomas and is accessed via the World Wide Web.</p>
-        <p>It is recommended you view this website using a desktop personal computer instead of a mobile telecommunications device.</p>
+        <p>It is recommended you view this website using a personal desktop computer instead of a mobile telecommunications device.</p>
       </div>
       <div className="image"></div>
     </div>
