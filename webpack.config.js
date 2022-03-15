@@ -21,7 +21,7 @@ module.exports = (wpEnv) => {
     },
     live: {
       filename: 'index_bundle.js',
-      publicPath: '/apps/portfolio-2021'
+      publicPath: '/apps/portfolio-2021/'
     }
   }
 
