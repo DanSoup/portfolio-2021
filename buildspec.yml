@@ -1,10 +1,15 @@
 version: 0.2
 
+env:
+  variables:
+    BS_FOLDER: "apps"
+    BS_URL: "portfolio-2021"
+
 phases:
   install:
     commands:
       - pip3 install --upgrade awscli
       - npm install
-      - LIVE_PUBLIC_PATH=$PUBLIC_PATH
+      - LIVE_PUBLIC_PATH=$PUBLIC_PATH/$BS_FOLDER/$BS_URL
       - npm run live
-      - aws s3 sync --delete dist/ $APP_BUCKET/apps/portfolio-2021
+      - aws s3 sync --delete dist/ $APP_BUCKET/$BS_FOLDER/$BS_URL
